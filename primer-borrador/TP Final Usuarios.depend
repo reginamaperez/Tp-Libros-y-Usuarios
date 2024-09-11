@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1725928771 source:c:\users\ana\desktop\regi fuck u\prog 2024\lab 2\tp final usuarios\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"usuariosAdmin.h"
+
+1725928809 c:\users\ana\desktop\regi fuck u\prog 2024\lab 2\tp final usuarios\usuariosadmin.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	"string.h"
+
+1725928771 source:c:\users\ana\desktop\regi fuck u\prog 2024\lab 2\usuarios admin\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"usuariosAdmin.h"
+
+1726093962 c:\users\ana\desktop\regi fuck u\prog 2024\lab 2\usuarios admin\usuariosadmin.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	"string.h"
+
