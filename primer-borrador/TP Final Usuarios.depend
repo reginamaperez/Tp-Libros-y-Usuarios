@@ -23,3 +23,41 @@
 	<conio.h>
 	"string.h"
 
+1726152503 source:c:\users\paula\documents\github\tp-libros-y-usuarios\primer-borrador\libros.c
+	"Libros.h"
+
+1726151564 source:c:\users\paula\documents\github\tp-libros-y-usuarios\primer-borrador\usuarios.c
+	"Usuarios.h"
+
+1726146283 source:c:\users\paula\documents\github\tp-libros-y-usuarios\primer-borrador\validaciones.c
+	"Validaciones.h"
+
+1726152044 source:c:\users\paula\documents\github\tp-libros-y-usuarios\primer-borrador\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"usuariosAdmin.h"
+	"Usuarios.h"
+	"Libros.h"
+
+1726152044 c:\users\paula\documents\github\tp-libros-y-usuarios\primer-borrador\usuariosadmin.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+
+1726151180 c:\users\paula\documents\github\tp-libros-y-usuarios\primer-borrador\usuarios.h
+
+1726152044 c:\users\paula\documents\github\tp-libros-y-usuarios\primer-borrador\libros.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+
+1726152044 c:\users\paula\documents\github\tp-libros-y-usuarios\primer-borrador\validaciones.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+
