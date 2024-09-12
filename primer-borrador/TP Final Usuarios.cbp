@@ -39,6 +39,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Usuarios.h" />
+		<Unit filename="Validaciones.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Validaciones.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

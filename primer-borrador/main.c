@@ -1,11 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <conio.h>
+
 #include "usuariosAdmin.h"
+#include "Usuarios.h"
+#include "Libros.h"
+
 
 int main()
 {
-    printf("Hello world!\n");
+   printf("\n");
+    printf("\n");
+
+    printf("-----    ---      ---    -   -  -      -     ---      -----  -------  -----   ----- \n");
+    printf("-   -   -   -    -   -   -   -  - -  - -    -   -     -         -     -       -   -     \n");
+    printf("----   -     -  -     -  - -    -  -   -   - -- -     -----     -     ---     ----      \n");
+    printf("-    -  -   -    -   -   -   -  -      -   -     -        -     -     -       -    -      \n");
+    printf("-----    ---      ---    -    - -      -  --     --   -----     -     -----   -    - \n");
+
+    printf("\n");
+    printf("\n");
+
+
     return 0;
 }
 

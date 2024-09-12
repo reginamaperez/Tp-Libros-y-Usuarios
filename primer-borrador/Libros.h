@@ -1,6 +1,13 @@
 #ifndef LIBROS_H_INCLUDED
 #define LIBROS_H_INCLUDED
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <conio.h>
+
+
+
 typedef struct{
     int idLibro; /// único, autoincremental
     char titulo[100];
@@ -10,6 +17,11 @@ typedef struct{
     float valoracion;
     int eliminado; /// 0 si está activo - 1 si está eliminado
 }stLibro;
+
+typedef struct {
+    stLibro datosLibros;
+    struct nodoLibros * sig;
+}nodoLibros;
 
 ///     FUNCIONES
 
