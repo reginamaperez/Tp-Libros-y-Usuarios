@@ -31,6 +31,14 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Libros.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libros.h" />
+		<Unit filename="Usuarios.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Usuarios.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -43,6 +51,9 @@
 		</Unit>
 		<Extensions>
 			<lib_finder disable_auto="1" />
+			<code_completion />
+			<envvars />
+			<debugger />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
