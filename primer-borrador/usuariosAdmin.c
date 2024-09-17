@@ -9,7 +9,12 @@ struct nodoUsuarios * sig;
 }nodoUsuarios;
 **/
 
-/** FUNCIONES HECHAS:
+/**
+ PULIR:
+- VALIDAR LONGITUD DE STRINGS EN MODIFICARUSUARIO
+- AGREGAR FUNCION DE ID LIBRO A CARGARLIBROMANUAL
+
+ FUNCIONES HECHAS:
 - MOSTRAR DATOS DE 1 USUARIO
 - MOSTRAR LISTA DE TODOS LOS USUARIOS (TODOS/SOLO ACTIVOS/INACTIVOS)
 - BUSCAR USUARIO POR DNI Y MOSTRARLO
@@ -29,8 +34,8 @@ void mostrarUnUsuario(nodoUsuarios* usuario) ///No muestra todo los datos, como 
         printf("Email: %s\n", usuario->datosUsuarios.email);
         printf("Domicilio: %s %d\n", usuario->datosUsuarios.domicilio.calle,usuario->datosUsuarios.domicilio.altura);
         printf("Localidad, CP, Ciudad: %s %i %s \n", usuario->datosUsuarios.domicilio.localidad, usuario->datosUsuarios.domicilio.cp, usuario->datosUsuarios.domicilio.ciudad);
-        printf("País: %s\n", usuario->datosUsuarios.domicilio.pais);
-        printf("Usuario activo?: %s\n", usuario->datosUsuarios.eliminado == 0 ? "Sí" : "No");
+        printf("PaÃ­s: %s\n", usuario->datosUsuarios.domicilio.pais);
+        printf("Usuario activo?: %s\n", usuario->datosUsuarios.eliminado == 0 ? "SÃ­" : "No");
     }
 }
 /// Ver listado de todos los usuarios
@@ -157,37 +162,36 @@ nodoUsuarios * buscarUsuarioPorEmail(nodoUsuarios * listaUsuarios)
         }
         return aux;
 }
-/// Baja lógica de un usuario
-
+/// Baja lÃ³gica de un usuario
 nodoUsuarios* bajaDelUsuario(nodoUsuarios * listaUsuarios)
 {
     nodoUsuarios * aux = listaUsuarios;
-    int encontrado = 0;
-    char bajaUsuario[50];
 
-    while (aux!=NULL && encontrado)
+    if (listaUsuarios)
     {
-        printf("\nIngrese el nombre del usuario a dar de baja:\n");
-        fflush(stdin);
-        gets(bajaUsuario);
-
-            if (strcmpi(aux->datosUsuarios.username, bajaUsuario) == 0)
-            {
-                encontrado = 1;
+        printf("\nBuscar usuario a modificar segun: A-DNI B- EMAIL\n");
+        scanf ("%c",&opcion);
+        if (opcion == 'A' || opcion == 'a')
+        {
+            aux = buscarUsuarioPorDni(listaUsuarios);
+        }
+        else if (opcion == 'B' || opcion == 'b')
+        {
+            aux = buscarUsuarioPorEmail(listaUsuarios);
+        }
+        else
+        {
+            printf ("\nOpcion invalida\n");
+        }
+    while (aux!=NULL)
+    {
+    
                 aux->datosUsuarios.eliminado = -1;  /// Activo = 0, No Activo = -1
 
                 printf("\nUsuario dado de baja exitosamente:\n");
                mostrarUnUsuario(aux);
             }
-            else
-            {
-                aux = aux->sig;
-            }
-        }
-        if (!encontrado)
-        {
-            printf("\nUsuario no encontrado\n");
-        }
+    }
 
     return listaUsuarios;
 }
@@ -198,7 +202,7 @@ nodoUsuarios * modificarDireccionUsuario(nodoUsuarios * listaUsuarios)
     nodoUsuarios * aux = NULL;
     char opcion;
     char cambios[100]; /// misma variable para cambios de calle, ciudad, pais y localidad
-    int nuevoNumero; /// usaré una misma variable para el cambio altura como para CP
+    int nuevoNumero; /// usarÃ© una misma variable para el cambio altura como para CP
 
     if (listaUsuarios)
     {
