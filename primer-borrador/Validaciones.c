@@ -34,6 +34,7 @@ int validarLenghtContrasenia(char password[])
     }
     return 1;
 }
+
 //5. VALIDAR CONTRASENIA
 int validarContrasenia(char password[], char password1[])
 {
@@ -42,4 +43,45 @@ int validarContrasenia(char password[], char password1[])
         return 1;
     }
     return 0;
+}
+
+int esEmailValido(char email[])
+{
+    char * arroba;
+    char * terminacion;
+
+    arroba = strchr(email, '@');
+    if (arroba == NULL) {
+        return 0;  /// No tiene '@'
+    }
+
+    terminacion= strstr(email, ".com");
+    if (terminacion == NULL || strcmp(terminacion, ".com") != 0) {
+        return 0;  /// No tiene la terminación '.com'
+    }
+
+    /// Asegurarse de que el '.com' esté después del '@'
+    if (arroba > terminacion) {
+        return 0;
+    }
+
+    return 1;  // Cumple ambas condiciones
+}
+
+
+int validarMayusculaMinuscula(char contrasenia[]) {
+    int tieneMayuscula = 0;
+    int tieneMinuscula = 0;
+
+    for (int i = 0; contrasenia[i] != '\0'; i++) {
+        if (isupper(contrasenia[i])) {
+            tieneMayuscula = 1;
+        }
+        if (islower(contrasenia[i])) {
+            tieneMinuscula = 1;
+        }
+    }
+
+    /// Devuelve 1 si ambas condiciones se cumplen, 0 de lo contrario
+    return tieneMayuscula && tieneMinuscula;
 }

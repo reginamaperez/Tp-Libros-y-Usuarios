@@ -4,8 +4,8 @@
 #include <conio.h>
 
 #include "usuariosAdmin.h"
-#include "Usuarios.h"
 #include "Libros.h"
+
 
 
 int main()
@@ -13,21 +13,19 @@ int main()
    printf("\n");
     printf("\n");
 
-    printf("-----    ---      ---    -   -  -      -     ---      -----  -------  -----   ----- \n");
-    printf("-   -   -   -    -   -   -   -  - -  - -    -   -     -         -     -       -   -     \n");
-    printf("----   -     -  -     -  - -    -  -   -   - -- -     -----     -     ---     ----      \n");
-    printf("-    -  -   -    -   -   -   -  -      -   -     -        -     -     -       -    -      \n");
-    printf("-----    ---      ---    -    - -      -  --     --   -----     -     -----   -    - \n");
+    printf("     -----    ---      ---    -    -  -      -     ---      -----  -------  -----   ----- \n");
+    printf("     -   -   -   -    -   -   -    -  - -  - -    -   -     -         -     -       -   -     \n");
+    printf("     ----   -     -  -     -  ----    -  -   -   - -- -     -----     -     ---     ----      \n");
+    printf("     -    -  -   -    -   -   -    -  -      -   -     -        -     -     -       -    -      \n");
+    printf("     -----    ---      ---    -     - -      -  --     --   -----     -     -----   -    - \n");
 
     printf("\n");
     printf("\n");
 
+///    nodoUsuarios * listaUsuarios = iniclista();
 
     return 0;
 }
-
-
-
 ///  EN LIBRERIA USUARIOS ADMIN DEJAMOS FUNCIONES DE ADMINISTRADOR
 
 ///  EN LIBRERIA USUARIOS PONEMOS FUNCIONES DE USUARIOSADMIN_H_INCLUDED

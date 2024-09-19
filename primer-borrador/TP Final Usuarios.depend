@@ -29,19 +29,18 @@
 1726151564 source:c:\users\paula\documents\github\tp-libros-y-usuarios\primer-borrador\usuarios.c
 	"Usuarios.h"
 
-1726146283 source:c:\users\paula\documents\github\tp-libros-y-usuarios\primer-borrador\validaciones.c
+1726297772 source:c:\users\paula\documents\github\tp-libros-y-usuarios\primer-borrador\validaciones.c
 	"Validaciones.h"
 
-1726152044 source:c:\users\paula\documents\github\tp-libros-y-usuarios\primer-borrador\main.c
+1726301299 source:c:\users\paula\documents\github\tp-libros-y-usuarios\primer-borrador\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<conio.h>
 	"usuariosAdmin.h"
-	"Usuarios.h"
 	"Libros.h"
 
-1726152044 c:\users\paula\documents\github\tp-libros-y-usuarios\primer-borrador\usuariosadmin.h
+1726292740 c:\users\paula\documents\github\tp-libros-y-usuarios\primer-borrador\usuariosadmin.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

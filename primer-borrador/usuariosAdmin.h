@@ -36,9 +36,14 @@ struct nodoUsuarios * sig;
 }nodoUsuarios;
 
 ///Prototipados
+
+nodoUsuarios * iniclista();
+nodoUsuarios * crearNodoUsuario(stUsuario usuario);
+nodoUsuarios * buscarUltimoNodoListaUsuarios(nodoUsuarios * listaUsuarios);
+nodoUsuarios * agregarUsuarioAlFinalLista(nodoUsuarios * listaUsuarios, nodoUsuarios * nuevo);
 nodoUsuarios * buscarUsuarioPorDni(nodoUsuarios * listaUsuarios);
 nodoUsuarios * buscarUsuarioPorEmail(nodoUsuarios * listaUsuarios);
-nodoUsuarios* bajaDelUsuario(nodoUsuarios * listaUsuarios);
+nodoUsuarios * bajaDelUsuario(nodoUsuarios * listaUsuarios);
 nodoUsuarios * modificarDireccionUsuario(nodoUsuarios * listaUsuarios);
 nodoUsuarios * modificarUsername (nodoUsuarios * listaUsuarios);
 void mostrarUnUsuario(nodoUsuarios* usuario);
@@ -46,4 +51,8 @@ void mostrarListaUsuariosInactivos (nodoUsuarios * listaUsuarios);
 void mostrarListaUsuariosActivos (nodoUsuarios * listaUsuarios);
 void mostrarListaUsuarios (nodoUsuarios * listaUsuarios);
 void elegirListaAVer (nodoUsuarios * listaUsuarios);
+void registrarUsuario(nodoUsuarios * listaUsuarios);
+stUsuario cargarContraseniaRegistro(stUsuario usuario);
+stUsuario cargarUsuarioRegistro(int tipoUsuario);
+
 #endif // USUARIOSADMIN_H_INCLUDED
