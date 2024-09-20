@@ -59,6 +59,43 @@ nodoLibros * cargarUnLibroManual (nodoLibros * listaLibros)
     return nuevoLibro;
 }
 
+///Carga un libro de forma automatica
+nodoLibros* cargarLibroAutomatico (stLibro librin){
+  nodoLibros* nuevoLibro=(nodoLibros*)malloc(sizeof(nodoLibros*));
+  
+    strcpy(nuevoLibro->datosLibros.titulo,librin.titulo);
+
+    strcpy(nuevoLibro->datosLibros.editorial, librin.editorial);
+
+    strcpy(nuevoLibro->datosLibros.autor, librin.autor);
+
+    strcpy(nuevoLibro->datosLibros.categoria, librin.categoria);
+
+    nuevoLibro->datosLibros.valoracion = librin.valoracion;
+    nuevoLibro->datosLibros.eliminado = librin.eliminado; /// Activacion del libro
+    //nuevoLibro->datosLibros.idLibro =
+    ///cuando se tenga funcion de generar ID.
+     nuevoLibro->siguiente = NULL;
+
+     return nuevoLibro;
+}
+
+///Libros del Archivo a la lista
+nodoLibros* ArchivoALibro(nodoLibros*lista){
+FILE*buf1=fopen(libros.dat,"rb");
+stLibro aux;
+nodoLibros* nodito=lista;
+
+if (buf1!=NULL){
+    while (fread(&aux,sizeof(stLibro),1,buf1)!=0){
+        nodito->sig=cargarLibroAutomatico(aux);
+        nodito=nodito->sig;
+    }
+    fclose(buf1);
+    }
+    return lista;
+}
+
 /// Libro de la lista al Archivo
 void libroAArchivo (nodoLibros * nuevoLibro)
 {
