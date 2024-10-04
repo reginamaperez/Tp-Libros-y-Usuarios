@@ -303,3 +303,26 @@ nodoUsuarios * modificarUsername (nodoUsuarios * listaUsuarios)
     }
     return listaUsuarios;
 }
+
+/// FUNCION BASICA AGREGAR AL FINAL
+nodoUsuarios * agregarAlFinal (nodoUsuarios * listaUsuarios, nodoUsuarios * nuevo)
+{
+    nodoUsuarios * ultNodo = buscarUltimoNodo(listaUsuarios);
+    ultNodo->sig = nuevo;
+
+    return listaUsuarios;
+}
+
+nodoUsuarios * buscarUltimoNodo (nodoUsuarios * listaUsuarios)
+{
+    nodoUsuarios * aux = lista;
+
+    if (lista)
+    {
+        while (aux->sig !=NULL)
+        {
+            aux= aux->sig;
+        }
+    }
+    return aux;
+}
