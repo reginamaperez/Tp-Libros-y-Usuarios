@@ -23,7 +23,17 @@ int validarStringNum(char username[])
     }
     return 1;
 }
-
+//3. VALIDAR MAIL
+int validarMail (char mail[]){
+ for(int i=0; i<strlen(mail); i++)
+    {
+        if(!isArroba(mail(i)) && !isPunt(i))
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
 
 //4. VALIDAR LENGHT DE LA CONTRASENIA
 int validarLenghtContrasenia(char password[])
@@ -57,10 +67,10 @@ int esEmailValido(char email[])
 
     terminacion= strstr(email, ".com");
     if (terminacion == NULL || strcmp(terminacion, ".com") != 0) {
-        return 0;  /// No tiene la terminación '.com'
+        return 0;  /// No tiene la terminaciï¿½n '.com'
     }
 
-    /// Asegurarse de que el '.com' esté después del '@'
+    /// Asegurarse de que el '.com' estï¿½ despuï¿½s del '@'
     if (arroba > terminacion) {
         return 0;
     }
@@ -84,4 +94,24 @@ int validarMayusculaMinuscula(char contrasenia[]) {
 
     /// Devuelve 1 si ambas condiciones se cumplen, 0 de lo contrario
     return tieneMayuscula && tieneMinuscula;
+}
+
+//6. ENCONTRAR USUARIO
+int encontrarUsuario (nodoUsuario* usu, char nombre[], char contra[]){
+nodoUsuario* aux=usu;
+int flag=0;
+while (usu->sig!=NULL && flag==0){
+    if (strcmp(nombre,aux->stUsuario.username)==0)
+        flag=contrastarContra(aux, contra);
+    else
+    aux=aux->sig;
+return flag;
+}
+}
+//7.COMPARA CONTRASEÃ‘A
+int contrastarContra (nodoUsuario* aux, char contra[]){
+if (strcmp(aux.>stUsuario.password,contra)==0)
+    return 2;
+else
+    return 1;
 }

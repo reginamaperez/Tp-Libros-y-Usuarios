@@ -9,7 +9,12 @@ struct nodoUsuarios * sig;
 }nodoUsuarios;
 **/
 
-/** FUNCIONES HECHAS:
+/**
+ PULIR:
+- VALIDAR LONGITUD DE STRINGS EN MODIFICARUSUARIO
+- AGREGAR FUNCION DE ID LIBRO A CARGARLIBROMANUAL
+
+ FUNCIONES HECHAS:
 - MOSTRAR DATOS DE 1 USUARIO
 - MOSTRAR LISTA DE TODOS LOS USUARIOS (TODOS/SOLO ACTIVOS/INACTIVOS)
 - BUSCAR USUARIO POR DNI Y MOSTRARLO
@@ -36,8 +41,8 @@ void mostrarUnUsuario(nodoUsuarios* usuario) ///No muestra todo los datos, como 
         printf("Email: %s\n", usuario->datosUsuarios.email);
         printf("Domicilio: %s %d\n", usuario->datosUsuarios.domicilio.calle,usuario->datosUsuarios.domicilio.altura);
         printf("Localidad, CP, Ciudad: %s %i %s \n", usuario->datosUsuarios.domicilio.localidad, usuario->datosUsuarios.domicilio.cp, usuario->datosUsuarios.domicilio.ciudad);
-        printf("País: %s\n", usuario->datosUsuarios.domicilio.pais);
-        printf("Usuario activo?: %s\n", usuario->datosUsuarios.eliminado == 0 ? "Sí" : "No");
+        printf("PaÃ­s: %s\n", usuario->datosUsuarios.domicilio.pais);
+        printf("Usuario activo?: %s\n", usuario->datosUsuarios.eliminado == 0 ? "SÃ­" : "No");
     }
 }
 /// Ver listado de todos los usuarios
@@ -164,36 +169,35 @@ nodoUsuarios * buscarUsuarioPorEmail(nodoUsuarios * listaUsuarios)
     }
     return aux;
 }
-/// Baja lógica de un usuario
-
+/// Baja lÃ³gica de un usuario
 nodoUsuarios* bajaDelUsuario(nodoUsuarios * listaUsuarios)
 {
     nodoUsuarios * aux = listaUsuarios;
-    int encontrado = 0;
-    char bajaUsuario[50];
 
-    while (aux!=NULL && encontrado)
+    if (listaUsuarios)
     {
-        printf("\nIngrese el nombre del usuario a dar de baja:\n");
-        fflush(stdin);
-        gets(bajaUsuario);
-
-        if (strcmpi(aux->datosUsuarios.username, bajaUsuario) == 0)
+        printf("\nBuscar usuario a modificar segun: A-DNI B- EMAIL\n");
+        scanf ("%c",&opcion);
+        if (opcion == 'A' || opcion == 'a')
         {
-            encontrado = 1;
-            aux->datosUsuarios.eliminado = -1;  /// Activo = 0, No Activo = -1
-
-            printf("\nUsuario dado de baja exitosamente:\n");
-            mostrarUnUsuario(aux);
+            aux = buscarUsuarioPorDni(listaUsuarios);
+        }
+        else if (opcion == 'B' || opcion == 'b')
+        {
+            aux = buscarUsuarioPorEmail(listaUsuarios);
         }
         else
         {
-            aux = aux->sig;
+            printf ("\nOpcion invalida\n");
         }
-    }
-    if (!encontrado)
+    while (aux!=NULL)
     {
-        printf("\nUsuario no encontrado\n");
+    
+                aux->datosUsuarios.eliminado = -1;  /// Activo = 0, No Activo = -1
+
+                printf("\nUsuario dado de baja exitosamente:\n");
+               mostrarUnUsuario(aux);
+            }
     }
 
     return listaUsuarios;
@@ -205,7 +209,7 @@ nodoUsuarios * modificarDireccionUsuario(nodoUsuarios * listaUsuarios)
     nodoUsuarios * aux = NULL;
     char opcion;
     char cambios[100]; /// misma variable para cambios de calle, ciudad, pais y localidad
-    int nuevoNumero; /// usaré una misma variable para el cambio altura como para CP
+    int nuevoNumero; /// usarÃ© una misma variable para el cambio altura como para CP
 
     if (listaUsuarios)
     {
@@ -314,20 +318,20 @@ nodoUsuarios * modificarUsername (nodoUsuarios * listaUsuarios)
 ///Registro manual:
 
 ///Un usuario puede crear una cuenta, para este proceso de registro/onboarding se deben validar los siguientes
-///campos: email y contraseña.
-///El email debe contener un @ y un .com. Además se debe válidar que el email no este registrado previamente por otro usuario.
-///La contraseña debe contener por lo menos 1 mayúscula y 1 minúscula.
+///campos: email y contraseï¿½a.
+///El email debe contener un @ y un .com. Ademï¿½s se debe vï¿½lidar que el email no este registrado previamente por otro usuario.
+///La contraseï¿½a debe contener por lo menos 1 mayï¿½scula y 1 minï¿½scula.
 ///Al momento en que finaliza el proceso de registro, se lo debe redirigir a la pantalla de login.
 
-///Un usuario debe poder ingresar al sistema con sus credenciales: email y contraseña. En caso de que el email no exista
-///se le debe indicar que no existe usuario con esos datos. En caso de que la contraseña no sea correcta, se le debe indicar
+///Un usuario debe poder ingresar al sistema con sus credenciales: email y contraseï¿½a. En caso de que el email no exista
+///se le debe indicar que no existe usuario con esos datos. En caso de que la contraseï¿½a no sea correcta, se le debe indicar
 /// que algunos de los campos son incorrectos.
 
-///Un usuario una vez logueado en el sistema podrá modificar su información personal.
+///Un usuario una vez logueado en el sistema podrï¿½ modificar su informaciï¿½n personal.
 
-///Una opción de deslogueo para salir del sistema y que pueda ingresar con otra cuenta.
+///Una opciï¿½n de deslogueo para salir del sistema y que pueda ingresar con otra cuenta.
 
-///Asimismo, además de las funcionalidades anteriores, un usuario administrador podrá:
+///Asimismo, ademï¿½s de las funcionalidades anteriores, un usuario administrador podrï¿½:
 ///Ver todos los usuarios registrados en el sistema.
 ///Dar de baja de usuarios.
 
@@ -345,18 +349,18 @@ void registrarUsuario(nodoUsuarios * listaUsuarios)
         printf("Ingrese su Nombre de Usuario:  \n");
         fflush(stdin);
         gets(username);
-        rta = buscarUsuarioPorUsername(listaUsuarios, username);  // Implementar esta función
+        rta = buscarUsuarioPorUsername(listaUsuarios, username);  // Implementar esta funciï¿½n
 
         if (rta == 1) {
             printf("El nombre de usuario ya existe.\n");
             printf("1. Intentar de nuevo\n");
             printf("2. Salir\n");
-            printf("Elija una opción: ");
+            printf("Elija una opciï¿½n: ");
             scanf("%d", &opcion);
 
             if (opcion == 2) {
                 printf("Registro cancelado.\n");
-                return;  // Salimos de la función si elige salir
+                return;  // Salimos de la funciï¿½n si elige salir
             }
         }
 
@@ -366,18 +370,18 @@ void registrarUsuario(nodoUsuarios * listaUsuarios)
         printf("Ingrese su email:  \n");
         fflush(stdin);
         gets(email);
-        rta = buscarUsuarioPorEmail(listaUsuarios, email);  // Implementar esta función
+        rta = buscarUsuarioPorEmail(listaUsuarios, email);  // Implementar esta funciï¿½n
 
         if (rta == 1) {
             printf("El email ya se encuentra registrado.\n");
             printf("1. Intentar de nuevo\n");
             printf("2. Salir\n");
-            printf("Elija una opción: ");
+            printf("Elija una opciï¿½n: ");
             scanf("%d", &opcion);
 
             if (opcion == 2) {
                 printf("Registro cancelado.\n");
-                return;  // Salimos de la función si elige salir
+                return;  // Salimos de la funciï¿½n si elige salir
             }
         }
 
@@ -410,7 +414,7 @@ stUsuario cargarContraseniaRegistro(stUsuario usuario)
          if (!validarContrasenia(contrasenia, confirmacion)) {
             printf("Las contrasenias no coinciden\n");
         } else if (!validarMayusculaMinuscula(contrasenia)) {
-            printf("La contrasenia debe tener al menos una mayúscula y una minúscula\n");
+            printf("La contrasenia debe tener al menos una mayï¿½scula y una minï¿½scula\n");
         }
 
         printf("Ingrese su nueva contrasenia:  \n");
@@ -422,7 +426,7 @@ stUsuario cargarContraseniaRegistro(stUsuario usuario)
         gets(confirmacion);
     }
 
-    // Si todo está bien, se copia la contraseña al usuario
+    // Si todo estï¿½ bien, se copia la contraseï¿½a al usuario
     strcpy(usuario.contrasenia, contrasenia);
     return usuario;
 }
@@ -446,7 +450,7 @@ stUsuario cargarUsuarioRegistro(int tipoUsuario)
 
     if (!esEmailValido(usuario.email))
     {
-        printf("Email inválido. Debe contener '@' y terminar en '.com'.\n");
+        printf("Email invï¿½lido. Debe contener '@' y terminar en '.com'.\n");
     }
 
 esEmailValido(usuario.email);
@@ -524,4 +528,27 @@ nodoUsuarios * agregarUsuarioAlFinalLista(nodoUsuarios * listaUsuarios, nodoUsua
         aux->sig=nuevo;
     }
     return listaUsuarios;
+}
+
+/// FUNCION BASICA AGREGAR AL FINAL
+nodoUsuarios * agregarAlFinal (nodoUsuarios * listaUsuarios, nodoUsuarios * nuevo)
+{
+    nodoUsuarios * ultNodo = buscarUltimoNodo(listaUsuarios);
+    ultNodo->sig = nuevo;
+
+    return listaUsuarios;
+}
+
+nodoUsuarios * buscarUltimoNodo (nodoUsuarios * listaUsuarios)
+{
+    nodoUsuarios * aux = lista;
+
+    if (lista)
+    {
+        while (aux->sig !=NULL)
+        {
+            aux= aux->sig;
+        }
+    }
+    return aux;
 }
