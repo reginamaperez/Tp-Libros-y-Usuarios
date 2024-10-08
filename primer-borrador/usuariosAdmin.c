@@ -530,6 +530,55 @@ nodoUsuarios * agregarUsuarioAlFinalLista(nodoUsuarios * listaUsuarios, nodoUsua
     return listaUsuarios;
 }
 
+///Ver cual usar segun la funcion de carga que se haga:
+
+/// Estructura nueva al archivo
+void UsuarioAArchivo (stUsuario  nuevoUsuario)
+{
+FILE * archivoUsuarios;
+archivoUsuarios = fopen ("usuarios.dat", "ab");
+
+stUsuario usuario = cargarUsuarioRegistro(tipoUsuario);
+
+    if (usuario != NULL) {
+        fwrite(&usuario, sizeof(stUsuario), 1, archivoUsuarios);
+    }
+
+    fclose(archivoUsuarios);
+}
+///De nodo nuevo a Archivo
+void UsuarioAArchivo (nodoUsuarios * nuevoUsuario)
+{
+    FILE * archivoUsuario;
+    archivoUsuario = fopen ("usuarios.dat", "ab");
+
+    nodoUsuarios* usuario = cargarUnUsuario(listaUsuarios);
+
+    if (usuario != NULL)
+    {
+        fwrite(&usuario->datosUsuarios, sizeof(stUsuario), 1, archivoUsuario);
+        free(usuario);
+    }
+
+    fclose(archivoUsuario);
+}
+/// De ultimo elemento de lista a Archivo
+void UsuarioAArchivo (nodoUsuarios * listaUsuarios)
+{
+    FILE * archivoUsuario;
+    archivoUsuario = fopen ("usuarios.dat", "ab");
+
+    nodoUsuarios* usuario = buscarUltimoNodo(listaUsuarios);
+
+    if (usuario != NULL)
+    {
+        fwrite(&usuario->datosUsuarios, sizeof(nodoUsuarios), 1, archivoUsuario);
+        free(usuario);
+    }
+
+    fclose(archivoUsuario);
+}
+
 /// FUNCION BASICA AGREGAR AL FINAL
 nodoUsuarios * agregarAlFinal (nodoUsuarios * listaUsuarios, nodoUsuarios * nuevo)
 {
