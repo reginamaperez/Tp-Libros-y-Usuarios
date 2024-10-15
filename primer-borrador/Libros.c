@@ -112,6 +112,32 @@ nodoLibros* libro = cargarUnLibroManual(listaLibros);
     fclose(archivoLibros);
 }
 
+///Libro por categoria 
+nodoLibros* libroXcategoria (char categoria[], nodoLibros* lista){
+nodoLibros* aux=lista;
+
+while (aux->sig!=NULL){
+    if (strcmp(aux->datosLibros.categoria,categoria)==0)
+        return aux;
+    else
+        aux=aux->sig;
+}
+return NULL;
+}
+
+///Libro por titulo 
+nodoLibros* libroXcategoria (char titulo[], nodoLibros* lista){
+nodoLibros* aux=lista;
+
+while (aux->sig!=NULL){
+    if (strcmp(aux->datosLibros.titulo,titulo)==0)
+        return aux;
+    else
+        aux=aux->sig;
+}
+return NULL;
+}
+
 /// Baja lógica de un libro
 
 nodoLibros* bajaDelLibro(nodoLibros * listaLibros)
